@@ -165,3 +165,62 @@ const playerClone = new Map(player)
 console.log(playerClone)
 
 console.log(player === playerClone)
+
+playerClone.set('Freddie Freeman', 'First Base')
+
+player.set('Freddie Freeman', 'Right Field')
+
+console.log(playerClone)
+
+console.log(player)
+
+const eaGames = new Map([
+    ['Madden', 'sport'],
+    ['Fifa', 'sport'],
+    ['Battlefield', 'shooter']
+])
+
+const activisionGames = new Map ([
+    ['C.O.D.', 'shooter'],
+    ['Splinter Cell', 'shooter'],
+    ['Crash Bandicoot', 'adventure']
+])
+
+const mergedMaps = new Map([...eaGames, ...activisionGames])
+
+console.log(mergedMaps)
+
+// .groupBy() static method groups the elements of a given iterable usin gthe values returned by a provided callback function. The final returned map uses the unique values from the test function as keys, which can be used to get the array of elements in each group
+
+console.clear()
+
+const inventory = [
+    { name: 'hip hop', qty: 90 },
+    { name: 'jazz', qty: 600 },
+    { name: 'soul', qty: 736 },
+    { name: 'rock', qty: 633 },
+    { name: 'classical', qty: 45 },
+    { name: 'country', qty: 53 }
+]
+
+const getMore = { getMore: true }
+const sufficient = { getMore: false }
+
+const result = Map.groupBy(inventory, ({ qty })=> qty < 200 ? getMore : sufficient)
+
+console.log(result)
+console.log(result.get(getMore))
+
+const artists = [
+    {id: 2, fName: 'John', lName: 'Coltrane', alias: ''},
+    {id: 4, fName: 'Prince', lName: 'Nelson', alias: 'Prince'}
+]
+
+const hasAlias = {hasAlias: true}
+const noAlias = { hasAlias: false}
+
+const artistMap = Map.groupBy(artists, ({ alias })=> alias == '' ? noAlias : hasAlias)
+
+const useAlias = artistMap.get(hasAlias)
+
+console.log(useAlias)
